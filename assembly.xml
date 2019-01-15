@@ -1,0 +1,36 @@
+<assembly>
+    <id>bin</id>
+    <!--Указывает, что наш бинарный дистрибутив представляет собой zip-пакет-->
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <!-- Добавляет зависимости нашего приложения к каталогу lib -->
+    <dependencySets>
+        <dependencySet>
+            <!-- Артефакт проекта не копируется в каталог библиотеки, так как он добавляется в корневой каталог zip-пакета. -->
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <!-- Добавляет сценарии запуска в корневой каталог zip-пакета. Сценарии запуска из каталога src/main/scripts. -->
+        <fileSet>
+            <directory>${project.build.scriptSourceDirectory}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>startup.*</include>
+            </includes>
+        </fileSet>
+        <!-- Добавляет jar-файл примера нашего приложения в корневой каталог созданного zip-пакета. -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

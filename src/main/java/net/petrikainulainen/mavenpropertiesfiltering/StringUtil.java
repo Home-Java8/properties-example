@@ -290,11 +290,14 @@ public class StringUtil {
                 for (Map.Entry<String, JsonElement> entry : entries) {
                     try {
                         JsonElement entryJsonElement = entry.getValue().getAsJsonObject().get(memberName);
-                        if (entryJsonElement != null) return entryJsonElement.getAsString();
+//                        if (entryJsonElement != null) return entryJsonElement.getAsString();
+                        if (entryJsonElement != null) return entryJsonElement.toString();
                     } catch (IllegalStateException ex) { }
                 }
             }
         } catch (JsonSyntaxException|MalformedJsonException ex) {}
+//        } catch (JsonSyntaxException|MalformedJsonException|UnsupportedOperationException ex) {}
+//        } catch (Exception ex) {}
         return null;
     }
 
@@ -304,7 +307,7 @@ public class StringUtil {
                 .parse(new InputSource(new StringReader(text)));
     }
 
-    private static JsonObject jsonConvert(String text) throws JsonSyntaxException, MalformedJsonException {
+    public static JsonObject jsonConvert(String text) throws JsonSyntaxException, MalformedJsonException {
         return new JsonParser().parse(text)
                 .getAsJsonObject();
     }

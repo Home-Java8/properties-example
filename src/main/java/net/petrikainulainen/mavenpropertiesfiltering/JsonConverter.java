@@ -1,5 +1,8 @@
 package net.petrikainulainen.mavenpropertiesfiltering;
 
+import com.google.gson.JsonElement;
+import com.google.gson.stream.MalformedJsonException;
+
 /**
  * @see https://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
  * @see https://stackoverflow.com/questions/31094305/java-gson-getting-the-list-of-all-keys-under-a-jsonobject
@@ -79,6 +82,56 @@ public class JsonConverter {
         System.out.println("memberName = " + StringUtil.getAsString(requestData, memberName));
         System.out.println("memberName = " + StringUtil.getAsString(jsonText, memberName));
         System.out.println("memberName = " + StringUtil.getAsString(jsonText2, memberName));
+
+
+
+        String getText = "{\n" +
+                "  \"cardholderInfo\": {\n" +
+                "    \"primaryAccountNumber\": \"4102321250000006\",\n" +
+                "    \"expirationDate\": {\n" +
+                "      \"month\": \"12\",\n" +
+                "      \"year\": \"2020\"\n" +
+                "    },\n" +
+                "    \"billingAddress\": {\n" +
+                "      \n" +
+                "    },\n" +
+                "    \"highValueCustomer\": false\n" +
+                "  },\n" +
+                "  \"riskInformation\": {\n" +
+                "    \"walletProviderAccountScore\": \"5\",\n" +
+                "    \"walletProviderDeviceScore\": \"3\",\n" +
+                "    \"deviceIMEI\": \"17\",\n" +
+                "    \"deviceSerialNumber\": \"97\",\n" +
+                "    \"deviceTimeZone\": \"Europ\",\n" +
+                "    \"deviceTimeZoneSetting\": \"NETWORK_SET\",\n" +
+                "    \"simSerialNumber\": \"97\",\n" +
+                "    \"walletProviderPANAge\": \"0\",\n" +
+                "    \"userAccountAge\": \"999\",\n" +
+                "    \"walletAccountAge\": \"999\",\n" +
+                "    \"walletProviderReasonCodes\": \"A0\"\n" +
+                "  },\n" +
+                "  \"tokenInfo\": {\n" +
+                "    \"token\": \"4551360150000027\",\n" +
+                "    \"tokenType\": \"HCE\",\n" +
+                "    \"tokenStatus\": \"ACTIVE\",\n" +
+                "    \"tokenExpirationDate\": {\n" +
+                "      \"month\": \"12\",\n" +
+                "      \"year\": \"2023\"\n" +
+                "    },\n" +
+                "    \"numberOfActiveTokensForPAN\": 1,\n" +
+                "    \"numberOfInactiveTokensForPAN\": 0,\n" +
+                "    \"numberOfSuspendedTokensForPAN\": 0\n" +
+                "  }\n" +
+                "}";
+
+        String pan = "primaryAccountNumber";
+        String exp = "expirationDate";
+        System.out.println("primaryAccountNumber = " + StringUtil.getAsString(getText, pan));
+
+        String jsonExp = StringUtil.getAsString(getText, exp);
+        System.out.println("expirationDate = " + jsonExp);
+        System.out.println("month = " + StringUtil.getAsString(jsonExp, "month"));
+        System.out.println("year = " + StringUtil.getAsString(jsonExp, "year").substring(2, 4));
     }
 
 }

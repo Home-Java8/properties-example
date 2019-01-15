@@ -295,9 +295,9 @@ public class StringUtil {
                     } catch (IllegalStateException ex) { }
                 }
             }
-        } catch (JsonSyntaxException|MalformedJsonException ex) {}
+//        } catch (JsonSyntaxException|MalformedJsonException ex) {}
 //        } catch (JsonSyntaxException|MalformedJsonException|UnsupportedOperationException ex) {}
-//        } catch (Exception ex) {}
+        } catch (Exception ex) {}
         return null;
     }
 

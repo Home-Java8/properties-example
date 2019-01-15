@@ -127,8 +127,13 @@ public class JsonConverter {
 
         String jsonExp = StringUtil.getAsString(getText, exp);
         System.out.println("expirationDate = " + jsonExp);
-        System.out.println("month = " + StringUtil.getAsString(jsonExp, "month"));
-        System.out.println("year = " + StringUtil.getAsString(jsonExp, "year").substring(2, 4));
+
+        String month = StringUtil.getAsString(jsonExp, "month");
+        String year = StringUtil.getAsString(jsonExp, "year").substring(2, 4);
+        exp = year + month;
+        System.out.println("month = " + month);
+        System.out.println("year = " + year);
+        System.out.println("exp = " + exp);
     }
 
 }

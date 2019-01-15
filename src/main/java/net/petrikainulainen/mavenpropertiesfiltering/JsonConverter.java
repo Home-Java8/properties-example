@@ -1,8 +1,5 @@
 package net.petrikainulainen.mavenpropertiesfiltering;
 
-import com.google.gson.JsonElement;
-import com.google.gson.stream.MalformedJsonException;
-
 /**
  * @see https://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
  * @see https://stackoverflow.com/questions/31094305/java-gson-getting-the-list-of-all-keys-under-a-jsonobject

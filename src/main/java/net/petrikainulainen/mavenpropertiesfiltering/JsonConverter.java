@@ -1,5 +1,9 @@
 package net.petrikainulainen.mavenpropertiesfiltering;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @see https://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
  * @see https://stackoverflow.com/questions/31094305/java-gson-getting-the-list-of-all-keys-under-a-jsonobject
@@ -134,6 +138,24 @@ public class JsonConverter {
         System.out.println("month = " + month);
         System.out.println("year = " + year);
         System.out.println("exp = " + exp);
+
+
+        Map<String, String> parseDecrypted = parseDecrypted(getText);
+        System.out.println(parseDecrypted);
+        System.out.println( parseDecrypted.get("pan") );
+        System.out.println( parseDecrypted.get("expdt") );
     }
 
+    static Map<String, String> parseDecrypted(String decrypted) {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("pan", StringUtil.getAsString(decrypted, "primaryAccountNumber"));
+
+        String jsonExp = StringUtil.getAsString(decrypted, "expirationDate");
+        String month = StringUtil.getAsString(jsonExp, "month");
+        String year = StringUtil.getAsString(jsonExp, "year").substring(2, 4);
+        map.put("expdt", year + month);
+
+        return map;
+    }
 }

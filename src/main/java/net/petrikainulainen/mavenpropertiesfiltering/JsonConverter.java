@@ -143,6 +143,11 @@ public class JsonConverter {
         System.out.println(parseDecrypted);
         System.out.println( parseDecrypted.get("pan") );
         System.out.println( parseDecrypted.get("expdt") );
+
+
+        System.out.println("------------------------------");
+        String stan = getStan(jsonText, "requestId", "correlationId");
+        System.out.println(stan);
     }
 
     static Map<String, String> parseDecrypted(String decrypted) {
@@ -156,5 +161,13 @@ public class JsonConverter {
         map.put("expdt", year + month);
 
         return map;
+    }
+
+    static String getStan(String jsonText, String... memberNames) {
+        for (String memberName: memberNames) {
+            String requestId = StringUtil.getAsString(jsonText, memberName);
+            if (requestId!=null) return "STAN: '" + requestId + "' ";
+        }
+        return "";
     }
 }

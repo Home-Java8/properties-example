@@ -1,5 +1,7 @@
 package com.petrikainulainen;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * @see https://www.journaldev.com/1237/java-convert-string-to-xml-document-and-xml-document-to-string
  */
@@ -12,5 +14,16 @@ public class XmlConverter {
 
         System.out.println("tagValue = " + StringUtil.getElementsByTagName(messageFaultReason, tagName));
 
+        String id = getId(messageFaultReason, "ns2:requestId", "ns3:requestId", "ns4:requestId");
+        System.out.println("tagValue = " + id);
+
+    }
+
+    static String getId(String xmlText, String... tagNames) {
+        for (String tagName: tagNames) {
+            String requestId = StringUtil.getElementsByTagName(xmlText, tagName);
+            if (requestId!=null) return requestId;
+        }
+        return StringUtil.randomUUID();
     }
 }

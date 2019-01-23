@@ -168,6 +168,6 @@ public class JsonConverter {
             String requestId = StringUtil.getAsString(jsonText, memberName);
             if (requestId!=null) return "STAN: '" + requestId + "' ";
         }
-        return "";
+        return "STAN: '" + StringUtil.randomUUID() + "' ";
     }
 }

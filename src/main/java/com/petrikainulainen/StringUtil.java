@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -310,6 +311,10 @@ public class StringUtil {
     public static JsonObject jsonConvert(String text) throws JsonSyntaxException, MalformedJsonException {
         return new JsonParser().parse(text)
                 .getAsJsonObject();
+    }
+
+    public static String randomUUID() {
+        return "XXXXXXXX-XXXX-XXXX-XXXX-" + ThreadLocalRandom.current().nextLong(100000000000L, 999999999999L);
     }
 
     /**

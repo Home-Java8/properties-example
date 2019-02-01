@@ -148,6 +148,15 @@ public class JsonConverter {
         System.out.println("------------------------------");
         String stan = getStan(jsonText, "requestId", "correlationId");
         System.out.println(stan);
+
+
+
+        System.out.println("==============================");
+
+        String messageJson = "{\"originator\":\"VTS\",\"messageHistoryId\":93201,\"jmsTokenCreateNotificationDto\":{\"messageReasonCode\":\"3700\",\"dateTimeOfEvent\":1521456287000,\"panReferenceID\":\"V-3017192484534844832252\",\"walletAccountEmailAddressHash\":\"19F6683D83B8A5236E6A9599EB167D46E593ECBCF4717225415EB9F5A8256272\",\"clientWalletAccountID\":\"uGrOxzwW2ghVx1nuoC2Fnwko\",\"panSource\":\"KEY_ENTERED\",\"deviceInfo\":{\"deviceID\":\"oUL7aJtruSi4rUO_WyMe1oF3\",\"deviceLanguageCode\":\"eng\",\"osType\":\"ANDROID\",\"osVersion\":\"5.1.1\",\"deviceType\":\"MOBILEPHONE_OR_TABLET\",\"deviceManufacturer\":\"samsung\",\"deviceBrand\":\"samsung\",\"deviceModel\":\"SM-J500FN\",\"deviceName\":\"(test-1) samsung - SM-J500FN\",\"deviceIPAddressV4\":\"91.197.217.52\",\"tokenProtectionMethod\":\"SOFTWARE\",\"storageTechnology\":\"SOFTWARE\"},\"encryptedData\":{\"cardholderInfo\":{\"primaryAccountNumber\":\"4102321250000006\",\"expirationDate\":{\"month\":\"12\",\"year\":\"2020\"}},\"tokenInfo\":{\"token\":\"4551360150000027\",\"tokenType\":\"HCE\",\"tokenStatus\":\"ACTIVE\",\"tokenExpirationDate\":{\"month\":\"12\",\"year\":\"2023\"},\"numberOfActiveTokensForPAN\":\"1\",\"numberOfInactiveTokensForPAN\":\"0\",\"numberOfSuspendedTokensForPAN\":\"0\"}},\"termsAndConditions\":{\"id\":\"73208cd0469c4e08a8b8b3c72b41ae13\",\"date\":1521456286000},\"tokenReferenceID\":\"DNITHE301736046984008715\",\"tokenRequestorID\":\"40010030273\",\"eventType\":\"TOKEN_CREATED\",\"eventID\":\"f42ecc499121c49ea9f316a7a2288201\"}}";
+        String eventID = getStan(messageJson, "eventID");
+        System.out.println("eventID = " + eventID);
+
     }
 
     static Map<String, String> parseDecrypted(String decrypted) {
@@ -166,7 +175,7 @@ public class JsonConverter {
     static String getStan(String jsonText, String... memberNames) {
         for (String memberName: memberNames) {
             String requestId = StringUtil.getAsString(jsonText, memberName);
-            if (requestId!=null) return "STAN: '" + requestId + "' ";
+            if (requestId!=null) return "STAN: '" + requestId.replace("\"", "") + "' ";
         }
         return "STAN: '" + StringUtil.randomUUID() + "' ";
     }

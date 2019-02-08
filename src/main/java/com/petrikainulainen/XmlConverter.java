@@ -17,6 +17,8 @@ public class XmlConverter {
         String id = getId(messageFaultReason, "ns2:requestId", "ns3:requestId", "ns4:requestId");
         System.out.println("tagValue = " + id);
 
+        StringBuffer payloadBuffer = new StringBuffer();
+        System.out.println(payloadBuffer.toString());
     }
 
     static String getId(String xmlText, String... tagNames) {

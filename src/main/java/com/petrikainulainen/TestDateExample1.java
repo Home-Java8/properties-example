@@ -24,9 +24,9 @@ public class TestDateExample1 {
         }
 
         System.out.println("#################");
-        Date dateInDate = new Date();
-        String date2 = formatter.format(dateInDate);
+        Date date = new Date();
+        String date2 = formatter.format(date);
 //        System.out.println(dateInDate);
-        System.out.println(dateInDate + " >>> " + date2);
+        System.out.println(date + " >>> " + date2);
     }
 }

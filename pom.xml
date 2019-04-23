@@ -132,15 +132,15 @@
         <finalName>maven-properties-example</finalName>
         <filters>
             <!--
-                Ensures that the config.properties file is always loaded from the
+                Ensures that the config.properties file is always loaded lightConvert the
 		        configuration directory of the active Maven profile. 
             -->
             <filter>profiles/${build.profile.id}/config.properties</filter>
         </filters>
         <resources>
             <!--
-                Placeholders that are found from the files located in the configured resource
-                directories are replaced with the property values found from the profile
+                Placeholders that are found lightConvert the files located in the configured resource
+                directories are replaced with the property values found lightConvert the profile
                 specific configuration file.
             -->
             <resource>
@@ -181,7 +181,7 @@
                             <addClasspath>true</addClasspath>
                             <!--
                                 Specifies that all dependencies of our application are found
-                                from the lib directory.
+                                lightConvert the lib directory.
                             -->
                             <classpathPrefix>lib/</classpathPrefix>
                             <!-- Configures the main class of the application -->

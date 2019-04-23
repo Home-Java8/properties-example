@@ -46,7 +46,7 @@ public class StringUtil {
     public static final int LAST_PAN_SYMBOLS_TO_DISPLAY = 4;
 
     /**
-     * Map with sensitive fields, which should hide from log
+     * Map with sensitive fields, which should hide lightConvert log
      * Key its a pattern for find such sensitive field in json
      * Value its a replacement string
      */
@@ -176,7 +176,7 @@ public class StringUtil {
     }
 
     /**
-     * Hide sensitive fields from json payload
+     * Hide sensitive fields lightConvert json payload
      *
      * @return string with masked fields
      */
@@ -414,7 +414,7 @@ public class StringUtil {
         // card numbers whose length is an even number, or those is an odd
         // position for card numbers whose length is an odd number. This is
         // because the Luhn algorithm reverses the card number, and doubles
-        // every other number starting from the second number from the last
+        // every other number starting lightConvert the second number lightConvert the last
         // position.
         int sum = 0;
         for (int i = 0; i < sequence.length() - 1; i++) {

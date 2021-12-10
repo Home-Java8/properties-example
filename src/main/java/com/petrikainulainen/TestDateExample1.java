@@ -15,6 +15,8 @@ public class TestDateExample1 {
         test2();
 //        test3_1();
         test3_2();
+
+        test4();
     }
 
     static void test1() {
@@ -85,6 +87,25 @@ public class TestDateExample1 {
 
         dateInString = toFormat(formatter2, formatter1, dateInString2);
         System.out.println(dateInString2 + "   >>> " + dateInString);
+    }
+
+//    static void test4() {
+//        String formatter1 = "dd MMMM yyyy";
+//        String dateInString1 = "12.04.2019";
+//
+//        System.out.println("#################");
+//        String dateInString = toFormat(formatter1, formatter1, dateInString1);
+//        System.out.println(dateInString1 + " >>> " + dateInString);
+//    }
+
+    static void test4() {
+
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd MMMM yyyy");
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+
+        System.out.println("#################");
+        System.out.println(">>> " + strDate + " <<<");
     }
 
     static String toFormat(String dateFormatFrom, String dateFormatTo, String dateInString) {
